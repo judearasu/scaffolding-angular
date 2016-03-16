@@ -5,6 +5,7 @@
 var inquirer = require('inquirer');
 var fs = require('fs-extra');
 var path = require("path");
+var chalk = require('chalk');
 var welcomeImg = require('./images/welcomeImg.js');
 
 /**
@@ -23,10 +24,11 @@ function scaffoldingAngular(template, path) {
         default: 'TestComponents'
     }, ], function(project_answers) {
         try {
-            fs.copySync('./templates/components/src', __dirname +'/source/app/components/test');
-            console.log("success!");
+            fs.copySync(__dirname + '/node_modules/scaffolding-angular/templates/components/src', __dirname +'/source/app/components/test');
+            chalk.green("Success! - Component Created");
         } catch (err) {
-            console.error(err);
+            console.log(err);
+            chalk.red("Error creating the Component");
         }
     });
 }
