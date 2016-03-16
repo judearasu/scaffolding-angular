@@ -4,8 +4,8 @@
  */
 var inquirer = require('inquirer');
 var fs = require('fs-extra');
-var imaging = require('imaging');
-var pictureTube = require('picture-tube');
+var path = require("path");
+var welcomeImg = require('./images/welcomeImg.js');
 
 /**
  * Main function to copy template files into the main project
@@ -14,35 +14,25 @@ var pictureTube = require('picture-tube');
  */
 
 function scaffoldingAngular(template, path) {
+    console.log(welcomeImg);
 
-    // imaging.draw('./images/thd_logo.png', {width: 50}, function (resp, status) {
-    //     console.log(status);
-    //     console.log(resp);
-    // });
-
-    var tube = pictureTube();
-    pictureTube().pipe(process.stdout);
-    fs.createReadStream(__dirname + '/images/thdpro-xtra.png').pipe(tube);
-
-    // inquirer.prompt([{
-    //     type: 'input',
-    //     name: 'project_name',
-    //     message: 'Hola Deepak:',
-    //     default: 'Gracias bro!!!!'
-    // }, ], function(project_answers) {
-    //     try {
-    //         fs.copySync('./templates/components/src', './tmp');
-    //         console.log("success!");
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // });
-    return true;
+    inquirer.prompt([{
+        type: 'input',
+        name: 'componentName',
+        message: 'Components Name:',
+        default: 'TestComponents'
+    }, ], function(project_answers) {
+        try {
+            fs.copySync('./templates/components/src', __dirname +'/source/app/components/test');
+            console.log("success!");
+        } catch (err) {
+            console.error(err);
+        }
+    });
 }
 
 /**
 * Call main function for testing
 */
-scaffoldingAngular();
-
+// scaffoldingAngular('testComponent', '/source/app/components');
 module.exports = scaffoldingAngular;
