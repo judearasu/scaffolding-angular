@@ -16,7 +16,8 @@
     "scaffolding"
   ],
   "dependencies": {
+    "console-png": "^1.1.0",
     "fs-extra": "^0.26.6",
-    "inquirer": "^0.12.0"
+    "imaging": "^2.1.0"
   }
 }
