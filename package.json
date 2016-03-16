@@ -18,6 +18,6 @@
   "dependencies": {
     "console-png": "^1.1.0",
     "fs-extra": "^0.26.6",
-    "imaging": "^2.1.0"
+    "imaging": "2.0.2"
   }
 }
