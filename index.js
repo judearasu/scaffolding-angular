@@ -5,6 +5,7 @@
 var inquirer = require('inquirer');
 var fs = require('fs-extra');
 var imaging = require('imaging');
+var pictureTube = require('picture-tube');
 
 /**
  * Main function to copy template files into the main project
@@ -14,14 +15,14 @@ var imaging = require('imaging');
 
 function scaffoldingAngular(template, path) {
 
-    // var command = "imaging ./images/thd_logo.png -l 20 -w 50 -c circle";
-    // console.log(command);
-    //
-    imaging.draw('./images/thd_logo.png', {width: 50}, function (resp, status) {
-        console.log(status);
-        console.log(resp);
-    });
+    // imaging.draw('./images/thd_logo.png', {width: 50}, function (resp, status) {
+    //     console.log(status);
+    //     console.log(resp);
+    // });
 
+    var tube = pictureTube();
+    pictureTube().pipe(process.stdout);
+    fs.createReadStream(__dirname + '/images/thdpro-xtra.png').pipe(tube);
 
     // inquirer.prompt([{
     //     type: 'input',
