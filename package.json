@@ -1,6 +1,6 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple tool to create an angular scaffolding",
   "main": "index.js",
   "author": "Eduardo Gonzalez",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.homedepot.com/jeg2783/scaffolding-angular.git"
+    "url": "https://github.homedepot.com/ProIT/scaffolding-angular.git"
   },
   "keywords": [
     "angular",
