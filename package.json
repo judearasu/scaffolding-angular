@@ -5,8 +5,14 @@
   "main": "index.js",
   "author": "Eduardo Gonzalez",
   "scripts": {
-    "test": "npm test"
+    "test": "xo && mocha"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.homedepot.com/ProIT/scaffolding-angular.git"
@@ -19,5 +25,17 @@
     "console-png": "^1.1.0",
     "fs-extra": "^0.26.6",
     "imaging": "^2.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "mocha": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "mocha"
+    ]
   }
 }
