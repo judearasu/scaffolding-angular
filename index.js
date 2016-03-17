@@ -20,9 +20,9 @@ function scaffoldingAngular(appDir) {
 
     setTimeout(function() {
         console.log(welcomeImg);
-        promptUser();
         nyancat.end();
-    }, 2000);
+        promptUser();
+    }, 1600);
 }
 
 function promptUser() {
