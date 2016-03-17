@@ -4,47 +4,32 @@
  */
 var inquirer = require('inquirer');
 var fs = require('fs-extra');
-var imaging = require('imaging');
+var path = require("path");
+var chalk = require('chalk');
+var welcomeImg = require('./images/welcomeImg.js');
 
 /**
  * Main function to copy template files into the main project
  * @param {object} template
- * @param {object} path
+ * @param {object} pathScaffolding
  */
 
-function scaffoldingAngular(template, path) {
-
-
-    imaging.draw('./images/i.jpg', function (resp, status) {
-        /*
-          if status == 'success', resp is the image charater string.
-          conols.log(resp) to render the image in your terminal
-          else if if status == 'fail', resp is the error message
-        */
-        console.log(status);
-        console.log(resp);
-    });
+module.exports = function scaffoldingAngular(appDir) {
+    console.log(welcomeImg);
+    appDir = appDir || path.resolve(__dirname + '../../../');
 
     inquirer.prompt([{
         type: 'input',
-        name: 'project_name',
-        message: 'Hola Deepak:',
-        default: 'Gracias bro!!!!'
+        name: 'componentName',
+        message: 'Components Name:',
+        default: 'TestComponents'
     }, ], function(project_answers) {
         try {
-            fs.copySync('./templates/components/src', './tmp');
-            console.log("success!");
+            fs.copySync(__dirname + pathScaffolding, appDir + '/source/app/components/'+template);
+            console.log("\n"+chalk.green("Success! - Component Created"));
         } catch (err) {
-            console.error(err);
+            console.log(err);
+            console.log("\n"+chalk.red("Error creating the Component"));
         }
     });
-
-    return true;
-}
-
-/**
-* Call main function for testing
-*/
-scaffoldingAngular();
-
-module.exports = scaffoldingAngular;
+};
