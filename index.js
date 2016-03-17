@@ -17,7 +17,7 @@
 		chalk = require('chalk'),
 		welcomeImg = require('./images/welcomeImg.js');
 
-	function scaffoldingAngular(path) {
+	function scaffoldingAngular(done) {
 
 
 		imaging.draw('./images/i.jpg', function(resp, status) {
@@ -38,25 +38,31 @@
 			name: 'spec',
 			message: 'Do you want to include unit testing?',
 			default: true
-		}], function(answers) {
+		}], function(params) {
 
 			answers = {
-				scriptAppName: answers.module,
-				className: _.capitalize(_.camelize(answers.fileName)),
-				fileName: _.camelize(answers.fileName)
+				scriptAppName: params.module,
+				className: _.capitalize(_.camelize(params.fileName)),
+				fileName: _.slugify(params.fileName),
+				fileName1: _.camelize(params.fileName)
 			};
 
+
 			var options = util.getGlobalOptions();
+			// create controller
+			// create  filter
+			// create directive
+			// create html
+
 			console.log(options, answers);
 			gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
 				.pipe(template(answers))
 				.pipe(rename(answers.fileName + '.controller.js'))
 				.pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
-				.pipe(gulp.dest(options.base + options.appDir + '/' + answers.scriptAppName))
+				.pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName))
 				.on('finish', function() {
 					console.log("\n" + chalk.green("Success! - Component Created"));
 				});
-
 		});
 
 
@@ -67,7 +73,7 @@
 	/**
 	 * Call main function for testing
 	 */
-	scaffoldingAngular();
+	 scaffoldingAngular();
 
 	module.exports = scaffoldingAngular;
 
