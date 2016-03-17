@@ -33,8 +33,3 @@ module.exports = function scaffoldingAngular(template, pathScaffolding) {
         }
     });
 };
-
-/**
-* Call main function for testing
-*/
-// scaffoldingAngular('testComponent', '/source/app/components');
