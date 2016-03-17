@@ -20,12 +20,12 @@ function scaffoldingAngular(appDir) {
 
     setTimeout(function() {
         console.log(welcomeImg);
-        promptTerminal()
+        promptUser();
         nyancat.end();
     }, 2000);
 }
 
-function promptTerminal() {
+function promptUser() {
     inquirer.prompt([{
         type: 'input',
         name: 'module',
