@@ -1,44 +1,68 @@
-/**
- * Module Scaffolding Angular
- * MyProDeskUI - Home Depot
- */
-var inquirer = require('inquirer');
-var fs = require('fs-extra');
-var path = require("path");
-var chalk = require('chalk');
-var welcomeImg = require('./images/welcomeImg.js');
-var Nyancat = require('nyansole');
-var clear = require("cli-clear");
+var gulp = require('gulp'),
+    inquirer = require('inquirer'),
+    fs = require('fs-extra'),
+    _ = require('underscore.string'),
+    imaging = require('imaging'),
+    template = require('gulp-template'),
+    rename = require('gulp-rename'),
+    conflict = require("gulp-conflict"),
+    util = require('./util'),
+    path = require("path"),
+    chalk = require('chalk'),
+    welcomeImg = require('./images/welcomeImg.js'),
+    Nyancat = require('nyansole'),
+    clear = require("cli-clear");
 
-/**
- * Main function to copy template files into the main project
- * @param {object} appDir
- */
-
-module.exports = function scaffoldingAngular(appDir) {
-
+function scaffoldingAngular(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
     var nyancat = (new Nyancat()).start();
 
-    setTimeout(function () {
+    setTimeout(function() {
         console.log(welcomeImg);
-
-        inquirer.prompt([{
-            type: 'input',
-            name: 'componentName',
-            message: 'Components Name:',
-            default: 'TestComponents'
-        }, ], function(project_answers) {
-            try {
-                fs.copySync(__dirname + '/templates/components', appDir + '/source/app/components/');
-                console.log("\n"+chalk.green("Success! - Component Created"));
-            } catch (err) {
-                console.log("\n"+chalk.red("Error creating the Component"));
-            }
-        });
-
+        promptTerminal()
         nyancat.end();
     }, 2000);
+}
 
-};
+function promptTerminal() {
+    inquirer.prompt([{
+        type: 'input',
+        name: 'module',
+        message: 'Type the name of the AngularJs module?',
+        default: 'projectName'
+    }, {
+        type: 'input',
+        name: 'fileName',
+        message: 'Type the name of your component?'
+    }, {
+        type: 'confirm',
+        name: 'spec',
+        message: 'Do you want to include unit testing?',
+        default: true
+    }], function(answers) {
+
+        answers = {
+            scriptAppName: answers.module,
+            className: _.capitalize(_.camelize(answers.fileName)),
+            fileName: _.camelize(answers.fileName)
+        };
+
+        var options = util.getGlobalOptions();
+        console.log(options, answers);
+        gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
+            .pipe(template(answers))
+            .pipe(rename(answers.fileName + '.controller.js'))
+            .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.scriptAppName))
+            .on('finish', function() {
+                console.log("\n" + chalk.green("Success! - Component Created"));
+            });
+    });
+}
+
+/**
+ * Call main function for testing
+ */
+scaffoldingAngular();
+module.exports = scaffoldingAngular;

@@ -1,23 +1,38 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.0.9",
+  "version": "1.5.0",
   "description": "Simple tool to create an angular scaffolding",
+  "license": "MIT",
   "main": "index.js",
   "author": "Eduardo Gonzalez",
   "scripts": {
-    "test": "npm test"
+    "test": "xo && mocha"
   },
   "repository": {},
   "keywords": [
     "angular",
     "scaffolding"
   ],
-  "dependencies": {
+  "devDependencies": {
     "chalk": "^1.1.1",
     "cli-clear": "^1.0.4",
     "fs-extra": "^0.26.7",
+    "gulp": "^3.9.1",
     "imaging": "^2.1.0",
     "inquirer": "^0.12.0",
-    "nyansole": "^0.5.1"
+    "nyansole": "^0.5.1",
+    "gulp-conflict": "^0.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^3.1.0",
+    "gulp-util": "^3.0.7",
+    "mocha": "*",
+    "underscore.string": "^3.3.4",
+    "xo": "*"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "mocha"
+    ]
   }
 }
