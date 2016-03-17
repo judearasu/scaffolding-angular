@@ -1,6 +1,6 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple tool to create an angular scaffolding",
   "main": "index.js",
   "author": "Eduardo Gonzalez",

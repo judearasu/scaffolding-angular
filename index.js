@@ -14,9 +14,9 @@ var welcomeImg = require('./images/welcomeImg.js');
  * @param {object} pathScaffolding
  */
 
-module.exports = function scaffoldingAngular(template, pathScaffolding) {
+module.exports = function scaffoldingAngular(appDir) {
     console.log(welcomeImg);
-    var appDir = path.resolve(__dirname + '../../../');
+    appDir = appDir || path.resolve(__dirname + '../../../');
 
     inquirer.prompt([{
         type: 'input',
