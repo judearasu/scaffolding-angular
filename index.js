@@ -26,10 +26,10 @@ module.exports = function scaffoldingAngular(template, pathScaffolding) {
     }, ], function(project_answers) {
         try {
             fs.copySync(__dirname + pathScaffolding, appDir + '/source/app/components/'+template);
-            chalk.green("Success! - Component Created");
+            console.log("\n"+chalk.green("Success! - Component Created"));
         } catch (err) {
             console.log(err);
-            chalk.red("Error creating the Component");
+            console.log("\n"+chalk.red("Error creating the Component"));
         }
     });
 };

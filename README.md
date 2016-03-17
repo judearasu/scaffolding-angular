@@ -4,6 +4,11 @@ Simple tool to create an angular scaffolding
 
 ## Installation
 
+In the terminal run the following command
+- `npm install scaffolding-angular --save`
+
+## Development
+
 In the terminal run the following commands
 - `npm install`
 - `node index.js`
