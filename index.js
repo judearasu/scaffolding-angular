@@ -4,9 +4,14 @@
  */
 //'use strict';
 var gulp = require('gulp'),
-    inquirer = require('inquirer'),
-    fs = require('fs-extra'),
-    imaging = require('imaging');
+	inquirer = require('inquirer'),
+	fs = require('fs-extra'),
+	_ = require('underscore.string'),
+	imaging = require('imaging'),
+	template = require('gulp-template'),
+	rename = require('gulp-rename'),
+	conflict = require("gulp-conflict"),
+	util = require('./util');
 
 /**
  * Main function to copy template files into the main project
@@ -14,7 +19,8 @@ var gulp = require('gulp'),
  * @param {object} path
  */
 
-function scaffoldingAngular(template, path) {
+
+function scaffoldingAngular(path) {
 
 
 	imaging.draw('./images/i.jpg', function(resp, status) {
@@ -24,23 +30,41 @@ function scaffoldingAngular(template, path) {
 
 	inquirer.prompt([{
 		type: 'input',
-		name: 'module_name',
-		message: 'Type the name of the module',
+		name: 'module',
+		message: 'Type the name of the AngularJs module?',
 		default: 'projectName'
 	}, {
 		type: 'input',
-		name: 'component_name',
-		message: 'Type the name of the component you want to create',
-		default: 'componentOne'
-	}], function(project_answers) {
-		userDefaults = {
-			project_module_name: project_answers.module_name,
-			project_component_name: project_answers.component_name
+		name: 'fileName',
+		message: 'Type the name of your component?'
+	}, {
+		type: 'confirm',
+		name: 'spec',
+		message: 'Do you want to include unit testing?',
+		default: true
+	}], function(answers) {
+
+		answers = {
+			scriptAppName: answers.module,
+			className: _.capitalize(_.camelize(answers.fileName)),
+			fileName: _.camelize(answers.fileName)
 		};
 
-    var componentName = project_answers.component_name;
+		var options = util.getGlobalOptions();
+		console.log(options, answers);
+		gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
+			.pipe(template(answers))
+			.pipe(rename(answers.fileName + '.controller.js'))
+			.pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
+			.pipe(gulp.dest(options.base + options.appDir + '/' + answers.scriptAppName))
+			.on('finish', function() {
+
+			});
+
 
 	});
+
+
 
 
 }
