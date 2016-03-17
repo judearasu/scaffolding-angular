@@ -39,6 +39,6 @@ module.exports = function scaffoldingAngular(appDir) {
         });
 
         nyancat.end();
-    }, 1400);
+    }, 2000);
 
 };
