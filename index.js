@@ -11,21 +11,16 @@ var gulp = require('gulp'),
 	template = require('gulp-template'),
 	rename = require('gulp-rename'),
 	conflict = require("gulp-conflict"),
-	util = require('./util');
-
-/**
- * Main function to copy template files into the main project
- * @param {object} template
- * @param {object} path
- */
-
+	util = require('./util'),
+	path = require("path"),
+	chalk = require('chalk'),
+	welcomeImg = require('./images/welcomeImg.js');
 
 function scaffoldingAngular(path) {
 
 
 	imaging.draw('./images/i.jpg', function(resp, status) {
-		console.log(status);
-		console.log(resp);
+		console.log(welcomeImg);
 	});
 
 	inquirer.prompt([{
@@ -58,9 +53,8 @@ function scaffoldingAngular(path) {
 			.pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
 			.pipe(gulp.dest(options.base + options.appDir + '/' + answers.scriptAppName))
 			.on('finish', function() {
-
+				console.log("\n" + chalk.green("Success! - Component Created"));
 			});
-
 
 	});
 

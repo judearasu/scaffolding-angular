@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var path = require('path');
 var assert = require('assert');
 var gutil = require('gulp-util');
@@ -11,3 +12,11 @@ describe('Scaffold Angular', function() {
     });
   });
 });
+=======
+var scaffoldingAngular = require('./index.js');
+
+/**
+* Call main function for testing
+*/
+scaffoldingAngular(__dirname);
+>>>>>>> master
