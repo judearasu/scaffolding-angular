@@ -39,6 +39,9 @@ In the terminal run the following commands
 - `npm install`
 - `node test.js`
 
+Run test cases with mocha
+- `npm test`
+
 To publish the package in NPM change the version in package.json
 - `"version": "1.0.x",`
 
