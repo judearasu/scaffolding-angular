@@ -17,7 +17,7 @@
 		chalk = require('chalk'),
 		welcomeImg = require('./images/welcomeImg.js');
 
-	function scaffoldingAngular(done) {
+	function scaffoldingAngular() {
 
 
 		imaging.draw('./images/i.jpg', function(resp, status) {
