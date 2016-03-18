@@ -62,6 +62,7 @@
 				.pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName))
 				.on('finish', function() {
 					console.log("\n" + chalk.green("Success! - Component Created"));
+					process.exit(1);
 				});
 		});
 
