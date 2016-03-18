@@ -6,6 +6,7 @@
   "main": "index.js",
   "author": "Eduardo Gonzalez",
   "scripts": {
+    "start": "node index.js",
     "test": "node_modules/.bin/mocha -w"
   },
   "repository": {},
