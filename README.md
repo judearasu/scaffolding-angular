@@ -47,3 +47,9 @@ To publish the package in NPM change the version in package.json
 
 And run the following command
 - `npm publish`
+
+
+## Bonus!!!! Home Depot Logo in the terminal
+
+In the terminal run the following commands
+- `sh ./images/image.sh`
