@@ -34,3 +34,31 @@ describe('Template Folder', function() {
         done();
     });
 });
+
+describe('Template Files components', function() {
+    var pathDir = path.resolve(__dirname + '/../templates/javascript/components');
+
+    it('Should exists in Components folder the file template.controller.js', function(done) {
+        var dir = fs.existsSync(pathDir + '/template.controller.js');
+        dir.should.equal(true);
+        done();
+    });
+
+    it('Should exists in Components folder the file template.directive.js', function(done) {
+        var dir = fs.existsSync(pathDir + '/template.directive.js');
+        dir.should.equal(true);
+        done();
+    });
+
+    it('Should exists in Components folder the file template.html', function(done) {
+        var dir = fs.existsSync(pathDir + '/template.html');
+        dir.should.equal(true);
+        done();
+    });
+
+    it('Should exists in Components folder the file template.scss', function(done) {
+        var dir = fs.existsSync(pathDir + '/template.scss');
+        dir.should.equal(true);
+        done();
+    });
+});
