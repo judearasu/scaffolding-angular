@@ -18,14 +18,14 @@ Create a Gulp or Grunt task
 ```
 /* Scaffolding UI **/
 gulp.task('scaffolding', function(done){
-    scaffolding(__dirname);
+    scaffolding.angular(__dirname);
 });
 ```
 
 ```
 /* Scaffolding UI **/
 grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
-    scaffolding(__dirname);
+    scaffolding.angular(__dirname);
 });
 ```
 
@@ -36,7 +36,6 @@ To run Scaffolding Angular
 ## Development
 
 In the terminal run the following commands
-- `npm install -g mocha`
 - `npm install`
 - `npm start`
 
