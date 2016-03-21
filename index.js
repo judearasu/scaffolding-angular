@@ -22,7 +22,7 @@ function scaffoldingAngular(appDir) {
         console.log(welcomeImg);
         nyancat.end();
         promptUser();
-    }, 1600);
+    }, 1400);
 }
 
 function promptUser() {
@@ -40,23 +40,31 @@ function promptUser() {
         name: 'spec',
         message: 'Do you want to include unit testing?',
         default: true
-    }], function(answers) {
+    }], function(params) {
 
         answers = {
-            scriptAppName: answers.module,
-            className: _.capitalize(_.camelize(answers.fileName)),
-            fileName: _.camelize(answers.fileName)
+            scriptAppName: params.module,
+            className: _.capitalize(_.camelize(params.fileName)),
+            fileName: _.slugify(params.fileName),
+            fileName1: _.camelize(params.fileName)
         };
 
+
         var options = util.getGlobalOptions();
+        // create controller
+        // create  filter
+        // create directive
+        // create html
+
         console.log(options, answers);
         gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
             .pipe(template(answers))
             .pipe(rename(answers.fileName + '.controller.js'))
             .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
-            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName))
             .on('finish', function() {
                 console.log("\n" + chalk.green("Success! - Component Created"));
+                process.exit(1);
             });
     });
 }
