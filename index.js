@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     Nyancat = require('nyansole'),
     clear = require("cli-clear");
 
-function scaffoldingAngular(appDir) {
+var scaffoldingAngular = function(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
     var nyancat = (new Nyancat()).start();
@@ -23,10 +23,10 @@ function scaffoldingAngular(appDir) {
         nyancat.end();
         promptUser();
     }, 1400);
-}
+};
 
-function promptUser() {
- module.exports  = scaffoldPrompt  = inquirer.prompt([{
+var promptsTerminal = function() {
+    var promptsTerminal = [{
         type: 'input',
         name: 'module',
         message: 'Type the name of the AngularJs module?',
@@ -40,7 +40,12 @@ function promptUser() {
         name: 'spec',
         message: 'Do you want to include unit testing?',
         default: true
-    }], function(params) {
+    }];
+    return promptsTerminal;
+};
+
+var promptUser = function() {
+    inquirer.prompt(promptsTerminal(), function(params) {
 
         answers = {
             scriptAppName: params.module,
@@ -67,10 +72,18 @@ function promptUser() {
                 process.exit(1);
             });
     });
-}
+};
 
 /**
- * Call main function for testing
+ * Call main function scaffoldingAngular()
  */
 scaffoldingAngular();
-module.exports = scaffoldingAngular;
+
+/**
+ * Node.js export modules
+ */
+module.exports = {
+    scaffoldingAngular: scaffoldingAngular,
+    promptsTerminal: promptsTerminal,
+    promptUser: promptUser
+};
