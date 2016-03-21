@@ -1,14 +1,10 @@
 describe('Nyansole', function() {
-    var Nyancat = require('nyansole'),
-        clear = require("cli-clear");
+    var Nyancat = require('nyansole');
 
     it('Should puts a nyancat in the console', function(done) {
         var nyancat = (new Nyancat()).start();
-        setTimeout(function() {
-            nyancat.end();
-            clear();
-            done();
-        }, 50);
+        nyancat.end();
+        done();
     });
 });
 
@@ -29,11 +25,27 @@ describe('Welcome Image', function() {
 describe('Terminal Prompt', function() {
     var scaffoldPrompt = require('../index.js').promptsTerminal();
 
-    it('should first input needs to have this properties', function(done) {
+    it('should Module input needs to have this properties', function(done) {
         var modulePrompt = scaffoldPrompt[0];
         modulePrompt.type.should.equal('input');
         modulePrompt.name.should.equal('module');
         modulePrompt.message.should.equal('Type the name of the AngularJs module?');
+        done();
+    });
+
+    it('should Component input needs to have this properties', function(done) {
+        var modulePrompt = scaffoldPrompt[1];
+        modulePrompt.type.should.equal('input');
+        modulePrompt.name.should.equal('fileName');
+        modulePrompt.message.should.equal('Type the name of your component?');
+        done();
+    });
+
+    it('should TDD input needs to have this properties', function(done) {
+        var modulePrompt = scaffoldPrompt[2];
+        modulePrompt.type.should.equal('confirm');
+        modulePrompt.name.should.equal('spec');
+        modulePrompt.message.should.equal('Do you want to include unit testing?');
         done();
     });
 });
