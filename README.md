@@ -36,6 +36,7 @@ To run Scaffolding Angular
 ## Development
 
 In the terminal run the following commands
+- `npm install -g mocha`
 - `npm install`
 - `npm start`
 
