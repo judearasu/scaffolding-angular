@@ -1,4 +1,4 @@
-describe('nyansole', function() {
+describe('Nyansole', function() {
     var Nyancat = require('nyansole'),
         clear = require("cli-clear");
 
@@ -11,7 +11,8 @@ describe('nyansole', function() {
         }, 50);
     });
 });
-describe('welcomeImg', function() {
+
+describe('Welcome Image', function() {
     var welcomeImg = require('../images/welcomeImg.js');
 
     it('should print welcome image in the console', function(done) {
@@ -25,7 +26,7 @@ describe('welcomeImg', function() {
     });
 });
 
-describe('terminalPrompt', function() {
+describe('Terminal Prompt', function() {
     var scaffoldPrompt = require('../index.js').promptsTerminal();
 
     it('should first input needs to have this properties', function(done) {
