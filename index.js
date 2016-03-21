@@ -46,7 +46,8 @@ function promptUser() {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
             fileName: _.slugify(params.fileName),
-            fileName1: _.camelize(params.fileName)
+            fileName1: _.camelize(params.fileName),
+            testCase: params.spec
         };
 
 
@@ -57,9 +58,37 @@ function promptUser() {
         // create html
 
         console.log(options, answers);
+        if (answers.testCase) {
+            gulp.src(__dirname + '/templates/javascript/spec/controller.js')
+                .pipe(template(answers))
+                .pipe(rename(answers.fileName + '.spec.js'))
+                .pipe(conflict(options.base + options.testSpecDir + '/'))
+                .pipe(gulp.dest(options.base + options.testSpecDir + '/'))
+								.on('finish', function() {
+		                console.log("\n" + chalk.green("Success! - Specs Created"));
+		            });
+        }
         gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
             .pipe(template(answers))
             .pipe(rename(answers.fileName + '.controller.js'))
+            .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName));
+
+        gulp.src(__dirname + '/templates/javascript/components/*.directive.js')
+            .pipe(template(answers))
+            .pipe(rename(answers.fileName + '.directive.js'))
+            .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName));
+
+        gulp.src(__dirname + '/templates/javascript/components/*.html')
+            .pipe(template(answers))
+            .pipe(rename(answers.fileName + '.html'))
+            .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName));
+
+        gulp.src(__dirname + '/templates/javascript/components/*.scss')
+            .pipe(template(answers))
+            .pipe(rename(answers.fileName + '.scss'))
             .pipe(conflict(options.base + options.appDir + '/' + answers.scriptAppName))
             .pipe(gulp.dest(options.base + options.appDir + '/' + answers.fileName))
             .on('finish', function() {

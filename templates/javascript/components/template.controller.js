@@ -1,7 +1,7 @@
 angular.module('<%= scriptAppName %>')
-    .controller('<%= className %>', <%= className %>);
+    .controller('<%= className %>Ctrl', <%= className %>Ctrl);
 
-<%= className %>.$inject = [];
+<%= className %>Ctrl.$inject = [];
 
 function <%= className %>() {
 	var ctrl = this;
