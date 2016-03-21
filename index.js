@@ -26,7 +26,7 @@ function scaffoldingAngular(appDir) {
 }
 
 function promptUser() {
-    inquirer.prompt([{
+ module.exports  = scaffoldPrompt  = inquirer.prompt([{
         type: 'input',
         name: 'module',
         message: 'Type the name of the AngularJs module?',
