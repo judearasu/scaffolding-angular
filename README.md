@@ -18,14 +18,14 @@ Create a Gulp or Grunt task
 ```
 /* Scaffolding UI **/
 gulp.task('scaffolding', function(done){
-    scaffolding(__dirname);
+    scaffolding.angular(__dirname);
 });
 ```
 
 ```
 /* Scaffolding UI **/
 grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
-    scaffolding(__dirname);
+    scaffolding.angular(__dirname);
 });
 ```
 
@@ -47,3 +47,9 @@ To publish the package in NPM change the version in package.json
 
 And run the following command
 - `npm publish`
+
+
+## Bonus!!!! Home Depot Logo in the terminal
+
+In the terminal run the following commands
+- `sh ./images/image.sh`
