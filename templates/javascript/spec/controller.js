@@ -1,26 +1,40 @@
-'use strict';
+(function() {
+    'use strict';
+    describe('Controller: <%= className %>Ctrl', function() {
 
-describe('Controller: <%= className %>Ctrl', function() {
+        var ctrl, $scope;
 
-    // load the controller's module
-    beforeEach(module('<%= scriptAppName %>'));
+        beforeEach(function() {
+            module('<%= scriptAppName %>');
+            module(function($provide) {
+                //$provide.value('service', serviceMock);
+            });
 
-    var <%= className %>
-    Ctrl,
-    scope;
+            // serviceMock = {
+            //     getSomeValue: function() {
+            //         return 'foobar';
+            //     }
+            // }
 
-    // Initialize the controller and a mock scope
-    beforeEach(inject(function($controller, $rootScope) {
-        scope = $rootScope.$new();
-        <%= className %>
-        Ctrl = $controller('<%= className %>Ctrl', {
-            $scope: scope
-                // place here mocked dependencies
+            inject(function($rootScope, $controller) {
+                $scope = $rootScope.$new();
+
+                ctrl = $controller('<%= className %>Ctrl', {
+                    $scope: $scope
+                });
+            });
+
+            it('should be created successfully', function() {
+              expect(ctrl).to.be.defined;
+            });
+
         });
-    }));
 
-    it('should attach a list of awesomeThings to the scope', function() {
-        expect(<%= className %>
-            Ctrl.awesomeThings.length).toBe(3);
+        describe('Internal Functions and Methods', function(){
+            it('should exist', function(){
+              expect(angular.isFunction(controller.init)).to.be.true);
+            });
+        });
     });
-});
+
+})();
