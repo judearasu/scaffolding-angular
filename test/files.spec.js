@@ -1,64 +1,54 @@
 var fs = require('fs-extra'),
     path = require("path");
 
-describe('Components Template Folder', function() {
-    var pathDir = path.resolve(__dirname + '/../templates/javascript/components');
+describe.only('Javascript based templates', function() {
+    var pathDir = path.resolve(__dirname + '/../templates/javascript');
 
-    it('Should exists a folder templates', function(done) {
+    it('Should exists a folder templates for javascript', function(done) {
         var dir = fs.existsSync(pathDir);
         dir.should.equal(true);
         done();
     });
 
-    it('Should exists a folder templates/components', function(done) {
-        var dir = fs.existsSync(pathDir + '/components');
-        dir.should.equal(true);
-        done();
+    describe('Should validate folders inside javascript templates', function() {
+        it('should exists a folder components', function(done) {
+            var dir = fs.existsSync(pathDir + '/components');
+            dir.should.equal(true);
+            done();
+        });
+        describe('Should validate files inside the components folder', function() {
+            it('should exists on components folder the file template.controller.js', function(done) {
+                var dir = fs.existsSync(pathDir + '/components/template.controller.js');
+                dir.should.equal(true);
+                done();
+            });
+            it('should exists on components folder the file template.directive.js', function(done) {
+                var dir = fs.existsSync(pathDir + '/components/template.directive.js');
+                dir.should.equal(true);
+                done();
+            });
+            it('should exists on components folder the file template.html', function(done) {
+                var dir = fs.existsSync(pathDir + '/components/template.html');
+                dir.should.equal(true);
+                done();
+            });
+            it('should exists on components folder the file template.scss', function(done) {
+                var dir = fs.existsSync(pathDir + '/components/template.scss');
+                dir.should.equal(true);
+                done();
+            });
+
+        });
+        it('Should exists a folder mocks', function(done) {
+            var dir = fs.existsSync(pathDir + '/mocks');
+            dir.should.equal(true);
+            done();
+        });
+        it('Should exists a folder spec', function(done) {
+            var dir = fs.existsSync(pathDir + '/spec');
+            dir.should.equal(true);
+            done();
+        });
     });
 
-    it('Should exists a folder templates/javascript', function(done) {
-        var dir = fs.existsSync(pathDir + '/javascript');
-        dir.should.equal(true);
-        done();
-    });
-
-    it('Should exists a folder templates/mock_service', function(done) {
-        var dir = fs.existsSync(pathDir + '/mock_service');
-        dir.should.equal(true);
-        done();
-    });
-
-    it('Should exists a folder templates/service', function(done) {
-        var dir = fs.existsSync(pathDir + '/service');
-        dir.should.equal(true);
-        done();
-    });
-});
-
-describe('Template Files components', function() {
-    var pathDir = path.resolve(__dirname + '/../templates/javascript/components');
-
-    it('Should exists in Components folder the file template.controller.js', function(done) {
-        var dir = fs.existsSync(pathDir + '/template.controller.js');
-        dir.should.equal(true);
-        done();
-    });
-
-    it('Should exists in Components folder the file template.directive.js', function(done) {
-        var dir = fs.existsSync(pathDir + '/template.directive.js');
-        dir.should.equal(true);
-        done();
-    });
-
-    it('Should exists in Components folder the file template.html', function(done) {
-        var dir = fs.existsSync(pathDir + '/template.html');
-        dir.should.equal(true);
-        done();
-    });
-
-    it('Should exists in Components folder the file template.scss', function(done) {
-        var dir = fs.existsSync(pathDir + '/template.scss');
-        dir.should.equal(true);
-        done();
-    });
 });
