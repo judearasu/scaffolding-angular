@@ -9,7 +9,8 @@
 	function getGlobalOptions() {
 		return {
 			appDir: 'src/app/components',
-			base: './'
+			base: './',
+			testSpecDir: 'src/test/js/specs'
 		};
 	}
 

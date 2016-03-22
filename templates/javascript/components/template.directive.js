@@ -1,21 +1,21 @@
-angular.module('%templateModule%')
-	.directive('%templateDirective%', %templateDirective%);
+angular.module('<%= scriptAppName %>')
+	.directive('<%= className %>', <%= className %>);
 
-function %templateDirective%() {
+function <%= className %>() {
 
 	var directive = {
 		link: link,
 	    restrict: 'EA',
-	    controller: '%templateCtrl%',
-	    controllerAs: '%templateCtrl%',
+	    controller: '<%= className %>Ctrl',
+	    controllerAs: '<%= className.toLowerCase() %>',
 	    bindToController: true,
-    	templateUrl: 'components/%templateCtrl%/%templateCtrl%.html',
+    	templateUrl: 'components/<%= fileName %>/<%= fileName %>.html',
         scope:{}
     };
 
 	    return directive;
 
-	    function link(scope, elem, attrs, %templateCtrl%) {
-	        %templateCtrl%.init();
+	    function link(scope, elem, attrs, <%= className %>) {
+	        <%= className %>.init();
 	    }
 	}
