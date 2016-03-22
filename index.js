@@ -53,10 +53,10 @@ var scaffolding = {
                 scriptAppName: params.module,
                 className: _.capitalize(_.camelize(params.fileName)),
                 fileName: _.slugify(params.fileName),
-                fileName1: _.camelize(params.fileName)
+                testCase: params.spec
             };
 
-            console.log(options, answers);
+            console.log(answers);
 
             var options = util.getGlobalOptions();
 
@@ -65,10 +65,7 @@ var scaffolding = {
                     .pipe(template(answers))
                     .pipe(rename(answers.fileName + '.spec.js'))
                     .pipe(conflict(options.base + options.testSpecDir + '/'))
-                    .pipe(gulp.dest(options.base + options.testSpecDir + '/'))
-                    .on('finish', function() {
-                        console.log("\n" + chalk.green("Success! - Specs Created"));
-                    });
+                    .pipe(gulp.dest(options.base + options.testSpecDir + '/'));
             }
             gulp.src(__dirname + '/templates/javascript/components/*.controller.js')
                 .pipe(template(answers))
