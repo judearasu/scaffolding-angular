@@ -41,7 +41,8 @@ function promptsTerminal() {
     }, {
         type: 'input',
         name: 'fileName',
-        message: 'Type the name of your component?'
+        message: 'Type the name of your component?',
+        default: 'testComponent'
     }, {
         type: 'confirm',
         name: 'spec',

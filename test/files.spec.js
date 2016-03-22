@@ -1,8 +1,8 @@
 var fs = require('fs-extra'),
     path = require("path");
 
-describe('Template Folder', function() {
-    var pathDir = path.resolve(__dirname + '/../templates');
+describe('Components Template Folder', function() {
+    var pathDir = path.resolve(__dirname + '/../templates/javascript/components');
 
     it('Should exists a folder templates', function(done) {
         var dir = fs.existsSync(pathDir);

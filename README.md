@@ -18,14 +18,14 @@ Create a Gulp or Grunt task
 ```
 /* Scaffolding UI **/
 gulp.task('scaffolding', function(done){
-    scaffolding.angular(__dirname);
+    scaffolding.appStart(__dirname);
 });
 ```
 
 ```
 /* Scaffolding UI **/
 grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
-    scaffolding.angular(__dirname);
+    scaffolding.appStart(__dirname);
 });
 ```
 
@@ -43,7 +43,7 @@ Run test cases with mocha
 - `npm test`
 
 To publish the package in NPM change the version in package.json
-- `"version": "1.0.x",`
+- `"version": "1.x.x",`
 
 And run the following command
 - `npm publish`
@@ -51,5 +51,5 @@ And run the following command
 
 ## Bonus!!!! Home Depot Logo in the terminal
 
-In the terminal run the following commands
+In the terminal run the following command
 - `sh ./images/image.sh`
