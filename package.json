@@ -1,10 +1,11 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.5.0",
-  "description": "Simple tool to create an angular scaffolding",
+  "version": "1.5.1",
+  "description": "NPM package to create an angular scaffolding",
   "license": "MIT",
   "main": "index.js",
   "author": "Eduardo Gonzalez",
+  "url" :"https://www.npmjs.com/package/scaffolding-angular",
   "scripts": {
     "start": "node index.js",
     "test": "node_modules/.bin/mocha -w"
