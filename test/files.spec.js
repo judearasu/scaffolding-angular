@@ -1,7 +1,7 @@
 var fs = require('fs-extra'),
     path = require("path");
 
-describe.only('Javascript based templates', function() {
+describe('Javascript based templates', function() {
     var pathDir = path.resolve(__dirname + '/../templates/javascript');
 
     it('Should exists a folder templates for javascript', function(done) {
@@ -39,15 +39,33 @@ describe.only('Javascript based templates', function() {
             });
 
         });
-        it('Should exists a folder mocks', function(done) {
-            var dir = fs.existsSync(pathDir + '/mocks');
-            dir.should.equal(true);
-            done();
+        describe('Should validate files inside the mocks folder', function() {
+            it('Should exists a folder mocks', function(done) {
+                var dir = fs.existsSync(pathDir + '/mocks');
+                dir.should.equal(true);
+                done();
+            });
+            describe('Should validate files inside the mocks folder', function() {
+                it('should exists on mocks folder the file template.mocks.js', function(done) {
+                    var dir = fs.existsSync(pathDir + '/mocks/template.mocks.js');
+                    dir.should.equal(true);
+                    done();
+                });
+            });
         });
-        it('Should exists a folder spec', function(done) {
-            var dir = fs.existsSync(pathDir + '/spec');
-            dir.should.equal(true);
-            done();
+        describe('Should validate files inside the spec folder', function() {
+            it('Should exists a folder spec', function(done) {
+                var dir = fs.existsSync(pathDir + '/spec');
+                dir.should.equal(true);
+                done();
+            });
+            describe('Should validate files inside the spec folder', function() {
+                it('should exists on spec folder the file controller.js', function(done) {
+                    var dir = fs.existsSync(pathDir + '/spec/controller.js');
+                    dir.should.equal(true);
+                    done();
+                });
+            });
         });
     });
 
