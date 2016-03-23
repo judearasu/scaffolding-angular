@@ -37,7 +37,7 @@ To run Scaffolding Angular
 
 In the terminal run the following commands
 - `npm install`
-- `npm start`
+- `node util.js`
 
 Run test cases with mocha
 - `npm test`

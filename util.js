@@ -1,18 +1,20 @@
-(function() {
+function getGlobalOptions() {
+    return {
+        appDir: 'src/app/components',
+        base: './',
+        testSpecDir: 'src/test/js/specs'
+    };
+}
 
-	/** Not using yargs **/
-	/**
-	 *
-	 * @return {Object} name
-	 */
+function appStart(){
+	var scaffolding = require('./index.js');
+	scaffolding.appStart(__dirname);
+}
 
-	function getGlobalOptions() {
-		return {
-			appDir: 'src/app/components',
-			base: './',
-			testSpecDir: 'src/test/js/specs'
-		};
-	}
+var util = {
+    getGlobalOptions: getGlobalOptions,
+    appStart: appStart
+};
 
-module.exports.getGlobalOptions = getGlobalOptions;
-})();
+appStart();
+module.exports = util;

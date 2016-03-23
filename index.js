@@ -6,34 +6,26 @@ var gulp = require('gulp'),
     template = require('gulp-template'),
     rename = require('gulp-rename'),
     conflict = require("gulp-conflict"),
-    util = require('./util'),
     path = require("path"),
     chalk = require('chalk'),
     welcomeImg = require('./images/welcomeImg.js'),
     Nyancat = require('nyansole'),
     clear = require("cli-clear");
 
-var angularScaffold = {
-    appStart: appStart,
-    promptsTerminal: promptsTerminal,
-    promptUser: promptUser
-};
-
 function appStart(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
-
     var nyancat = (new Nyancat()).start();
 
     setTimeout(function() {
         console.log(welcomeImg);
         nyancat.end();
         angularScaffold.promptUser();
-    }, 1400);
+    }, 1200);
 }
 
 function promptsTerminal() {
-    var prompts = [{
+    return [{
         type: 'input',
         name: 'module',
         message: 'Type the name of the AngularJs module?',
@@ -49,21 +41,19 @@ function promptsTerminal() {
         message: 'Do you want to include unit testing?',
         default: true
     }];
-    return prompts;
 }
 
 function promptUser() {
-    inquirer.prompt(promptsTerminal(), function(params) {
+    var util = require('./util.js');
+    var options = util.getGlobalOptions();
 
+    inquirer.prompt(promptsTerminal(), function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
             fileName: _.slugify(params.fileName),
             testCase: params.spec
         };
-
-        var options = util.getGlobalOptions();
-        console.log(prompt_answers);
 
         if (prompt_answers.testCase) {
             gulp.src(__dirname + '/templates/javascript/spec/controller.js')
@@ -103,5 +93,10 @@ function promptUser() {
     });
 }
 
-angularScaffold.appStart(__dirname);
+var angularScaffold = {
+    appStart: appStart,
+    promptsTerminal: promptsTerminal,
+    promptUser: promptUser
+};
+
 module.exports = angularScaffold;
