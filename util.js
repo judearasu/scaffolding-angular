@@ -1,8 +1,8 @@
 function getGlobalOptions() {
     return {
-        appDir: 'src/app/components',
+        appDir: 'source/app/components',
         base: './',
-        testSpecDir: 'src/test/js/specs'
+        testSpecDir: 'source/test/js/specs'
     };
 }
 
@@ -16,5 +16,6 @@ var util = {
     appStart: appStart
 };
 
-appStart();
+// Use only for testing
+// appStart();
 module.exports = util;

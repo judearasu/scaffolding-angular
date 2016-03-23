@@ -1,6 +1,6 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "NPM package to create an angular scaffolding",
   "license": "MIT",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "angular",
     "scaffolding"
   ],
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^1.1.1",
     "cli-clear": "^1.0.4",
     "fs-extra": "^0.26.7",
