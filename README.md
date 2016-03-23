@@ -49,7 +49,7 @@ And run the following command
 - `npm publish`
 
 
-## Bonus!!!! Home Depot Logo in the terminal
+## Bonus!!!! The Home Depot Logo in the terminal
 
 In the terminal run the following command
 - `sh ./images/image.sh`
