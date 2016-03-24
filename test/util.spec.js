@@ -14,15 +14,8 @@ describe.only('util', function() {
     done();
   });
 
-  it('getGlobalOptions should return a object', function(done) {
-    // getGlobalOptions.should.have.length(3);
-    //getGlobalOptions().should.be.instanceOf(Object);
-    getGlobalOptions.should.have.property('name','getGlobalOptions').and.have.lengthOf();
-    //getGlobalOptions.should.have.keys(['appDir', 'base','testSpecDir']);
-    // getGlobalOptions.should.not.be.Infinity();
-    // getGlobalOptions.should.return.an.Object().and.not.empty();
-    // getGlobalOptions.should.return.an.instanceOf(object);
-    // getGlobalOptions.should.be.an.Object().and.not.empty().and.match(/abc/);//
+  it('getGlobalOptions should return a object of length 3', function(done) {
+    Object.keys(getGlobalOptions()).should.have.length(3);
     done();
   });
 
