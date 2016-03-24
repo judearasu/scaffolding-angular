@@ -5,7 +5,7 @@ Simple tool to create an angular scaffolding
 ## Installation
 
 In the terminal run the following command
-- `npm install scaffolding-angular --save`
+- `npm install scaffolding-angular --save-dev`
 
 ## How to use
 
