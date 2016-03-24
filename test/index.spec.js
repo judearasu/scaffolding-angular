@@ -1,4 +1,4 @@
-describe.only('angularScaffold', function() {
+describe('angularScaffold', function() {
     //var scaffoldPrompt = require('../index.js').promptsTerminal();
     var angularScaffold = require('../index.js');
     // var appDir = __dirname;
