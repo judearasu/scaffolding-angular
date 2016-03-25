@@ -43,6 +43,14 @@ describe('Terminal Prompt', function() {
 
     it('should TDD input needs to have this properties', function(done) {
         var modulePrompt = scaffoldPrompt[2];
+        modulePrompt.type.should.equal('input');
+        modulePrompt.name.should.equal('pathTemplates');
+        modulePrompt.message.should.equal('Type the path for templates?');
+        done();
+    });
+
+    it('should TDD input needs to have this properties', function(done) {
+        var modulePrompt = scaffoldPrompt[3];
         modulePrompt.type.should.equal('confirm');
         modulePrompt.name.should.equal('spec');
         modulePrompt.message.should.equal('Do you want to include unit testing?');

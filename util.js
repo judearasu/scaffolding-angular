@@ -1,6 +1,6 @@
-function getGlobalOptions() {
+function getGlobalOptions(pathTemplates) {
     return {
-        appDir: 'source/app/components',
+        appDir: pathTemplates,
         base: './',
         testSpecDir: 'source/test/js/specs'
     };

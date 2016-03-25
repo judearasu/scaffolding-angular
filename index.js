@@ -36,6 +36,11 @@ function promptsTerminal() {
         message: 'Type the name of your component?',
         default: 'testComponent'
     }, {
+        type: 'input',
+        name: 'pathTemplates',
+        message: 'Type the path for templates?',
+        default: 'source/app/components'
+    }, {
         type: 'confirm',
         name: 'spec',
         message: 'Do you want to include unit testing?',
@@ -45,15 +50,17 @@ function promptsTerminal() {
 
 function promptUser() {
     var util = require('./util.js');
-    var options = util.getGlobalOptions();
 
     inquirer.prompt(promptsTerminal(), function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
             fileName: _.slugify(params.fileName),
-            testCase: params.spec
+            testCase: params.spec,
+            pathTemplates: params.pathTemplates,
         };
+        
+        var options = util.getGlobalOptions(prompt_answers.pathTemplates);
 
         if (prompt_answers.testCase) {
             gulp.src(__dirname + '/templates/javascript/spec/controller.js')

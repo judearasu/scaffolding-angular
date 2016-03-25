@@ -13,7 +13,7 @@ describe('angularScaffold', function() {
     });
 
     it('should be an array of length 3', function(done) {
-        promptsTerminal.should.be.instanceof(Array).and.have.lengthOf(3);
+        promptsTerminal.should.be.instanceof(Array).and.have.lengthOf(4);
         done();
     });
 });
