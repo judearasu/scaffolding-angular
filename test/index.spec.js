@@ -1,10 +1,9 @@
 describe('angularScaffold', function() {
-    //var scaffoldPrompt = require('../index.js').promptsTerminal();
-    var angularScaffold = require('../index.js');
-    // var appDir = __dirname;
-    var promptUser = angularScaffold.promptUser;
-    var promptsTerminal = angularScaffold.promptsTerminal();
-    var appStart = angularScaffold.appStart;
+    var angularScaffold = require('../index.js'),
+        promptUser = angularScaffold.promptUser,
+        promptsTerminal = angularScaffold.promptsTerminal(),
+        appStart = angularScaffold.appStart;
+
     it('should exist function named promptUser', function() {
         promptUser.should.be.Function();
     });

@@ -1,8 +1,7 @@
-describe.only('util', function() {
-  var util = require('../util.js');
-
-  var appStart = util.appStart;
-  var getGlobalOptions = util.getGlobalOptions;
+describe('util', function() {
+  var util = require('../util.js'),
+      appStart = util.appStart,
+      getGlobalOptions = util.getGlobalOptions;
 
   it('appstart should be a Function', function(done) {
     appStart.should.be.Function();
