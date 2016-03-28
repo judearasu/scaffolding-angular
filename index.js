@@ -24,6 +24,7 @@ function appStart(appDir) {
     }, 1200);
 }
 
+//
 function promptsTerminal() {
     return [{
         type: 'input',
@@ -59,7 +60,7 @@ function promptUser() {
             testCase: params.spec,
             pathTemplates: params.pathTemplates,
         };
-        
+
         var options = util.getGlobalOptions(prompt_answers.pathTemplates);
 
         if (prompt_answers.testCase) {
