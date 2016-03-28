@@ -8,6 +8,16 @@ function getGlobalOptions(pathTemplates) {
     };
 }
 
+function optionListTerminal() {
+    return [{
+        type: 'list',
+        name: constants.optionList.NAME,
+        message: constants.optionList.MESSAGE,
+        choices: constants.optionList.CHOICES,
+        default: constants.optionList.DEFAULT,
+    }];
+}
+
 function componentsTerminal() {
     return [{
         type: 'input',
@@ -52,11 +62,12 @@ function mockServiceTerminal() {
 
 function appStart(){
 	var scaffolding = require('./index.js');
-	scaffolding.appStart(__dirname);
+	scaffolding.appStart();
 }
 
 var util = {
     getGlobalOptions: getGlobalOptions,
+    optionListTerminal: optionListTerminal,
     componentsTerminal: componentsTerminal,
     ngServiceTerminal: ngServiceTerminal,
     mockServiceTerminal: mockServiceTerminal,
@@ -64,5 +75,5 @@ var util = {
 };
 
 // Call appStart(); only for testing
-appStart();
+// appStart();
 module.exports = util;

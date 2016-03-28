@@ -22,22 +22,22 @@ describe('Welcome Image', function() {
     });
 });
 
-describe('Terminal Prompt', function() {
+describe('Components Terminal Prompt', function() {
     var scaffoldPrompt = require('../util.js').componentsTerminal();
 
-    it('should Module input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[0];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal('module');
-        modulePrompt.message.should.equal('Type the name of the AngularJs module?');
-        done();
-    });
-
     it('should Component input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[1];
+        var modulePrompt = scaffoldPrompt[0];
         modulePrompt.type.should.equal('input');
         modulePrompt.name.should.equal('fileName');
         modulePrompt.message.should.equal('Type the name of your component?');
+        done();
+    });
+
+    it('should Module input needs to have this properties', function(done) {
+        var modulePrompt = scaffoldPrompt[1];
+        modulePrompt.type.should.equal('input');
+        modulePrompt.name.should.equal('module');
+        modulePrompt.message.should.equal('Type the name of the AngularJs module?');
         done();
     });
 

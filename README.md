@@ -18,14 +18,14 @@ Create a Gulp or Grunt task
 ```
 /* Scaffolding UI **/
 gulp.task('scaffolding', function(done){
-    scaffolding.appStart(__dirname);
+    scaffolding.appStart();
 });
 ```
 
 ```
 /* Scaffolding UI **/
 grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
-    scaffolding.appStart(__dirname);
+    scaffolding.appStart();
 });
 ```
 

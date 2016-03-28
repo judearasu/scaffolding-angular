@@ -1,3 +1,10 @@
+var optionList = {
+    NAME: 'options',
+    MESSAGE: 'What do you like to create?',
+    CHOICES: ['Component', 'Angular Services', 'Mock Services'],
+    DEFAULT: 'Component',
+};
+
 var component = {
     FOLDER_NAME: 'fileName',
     FOLDER_MESSAGE: 'Type the name of your component?',
@@ -29,8 +36,9 @@ var mockService = {
 };
 
 var constants = {
-      component: component,
-      ngService: ngService,
+    optionList: optionList,
+    component: component,
+    ngService: ngService,
     mockService: mockService
 };
 
