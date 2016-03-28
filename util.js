@@ -1,7 +1,7 @@
 var osLocale = require('os-locale');
 var constants = osLocale(function(err, locale) {
     constants = require('./locales/en.js');
-    if (locale === 'es_MX') {
+    if (locale === 'es_ES') {
         constants = require('./locales/es.js');
     }
 });
