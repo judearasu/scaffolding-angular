@@ -59,7 +59,7 @@ function promptUser() {
             testCase: params.spec,
             pathTemplates: params.pathTemplates,
         };
-        
+
         var options = util.getGlobalOptions(prompt_answers.pathTemplates);
 
         if (prompt_answers.testCase) {
@@ -81,7 +81,11 @@ function promptUser() {
             .pipe(rename(prompt_answers.fileName + '.directive.js'))
             .pipe(conflict(options.base + options.appDir + '/' + prompt_answers.scriptAppName))
             .pipe(gulp.dest(options.base + options.appDir + '/' + prompt_answers.fileName));
-
+        gulp.src(__dirname + '/templates/javascript/service/*.service.js')
+            .pipe(template(prompt_answers))
+            .pipe(rename(prompt_answers.fileName + '.directive.js'))
+            .pipe(conflict(options.base + options.appDir + '/' + prompt_answers.scriptAppName))
+            .pipe(gulp.dest(options.base + options.appDir + '/' + prompt_answers.fileName));
         gulp.src(__dirname + '/templates/javascript/components/*.html')
             .pipe(template(prompt_answers))
             .pipe(rename(prompt_answers.fileName + '.html'))

@@ -17,5 +17,5 @@ var util = {
 };
 
 // Call appStart(); only for testing
-// appStart();
+appStart();
 module.exports = util;
