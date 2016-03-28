@@ -23,7 +23,7 @@ describe('Welcome Image', function() {
 });
 
 describe('Terminal Prompt', function() {
-    var scaffoldPrompt = require('../index.js').promptsTerminal();
+    var scaffoldPrompt = require('../util.js').componentsTerminal();
 
     it('should Module input needs to have this properties', function(done) {
         var modulePrompt = scaffoldPrompt[0];

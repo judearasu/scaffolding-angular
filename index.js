@@ -16,42 +16,33 @@ function appStart(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
     var nyancat = (new Nyancat()).start();
-
+    
     setTimeout(function() {
         console.log(welcomeImg);
         nyancat.end();
-        angularScaffold.promptUser();
+        inquirer.prompt([{
+            type: 'list',
+            name: 'options',
+            message: 'What do you like to create?',
+            choices: ['Component', 'Angular Services', 'Mock Services'],
+            default: 'Component'
+        }], function(params) {
+            angularScaffold.promptUser(params.options);
+        });
     }, 1200);
 }
 
-function promptsTerminal() {
-    return [{
-        type: 'input',
-        name: 'module',
-        message: 'Type the name of the AngularJs module?',
-        default: 'projectName'
-    }, {
-        type: 'input',
-        name: 'fileName',
-        message: 'Type the name of your component?',
-        default: 'testComponent'
-    }, {
-        type: 'input',
-        name: 'pathTemplates',
-        message: 'Type the path for templates?',
-        default: 'source/app/components'
-    }, {
-        type: 'confirm',
-        name: 'spec',
-        message: 'Do you want to include unit testing?',
-        default: true
-    }];
-}
-
-function promptUser() {
+function promptUser(optionList) {
     var util = require('./util.js');
+    var optionsPrompt = util.componentsTerminal();
 
-    inquirer.prompt(promptsTerminal(), function(params) {
+    if(optionList === 'Angular Services'){
+        optionsPrompt = util.ngServiceTerminal();
+    } else if (optionList === 'Mock Services'){
+        optionsPrompt = util.mockServiceTerminal();
+    }
+
+    inquirer.prompt(optionsPrompt, function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
@@ -59,7 +50,7 @@ function promptUser() {
             testCase: params.spec,
             pathTemplates: params.pathTemplates,
         };
-        
+
         var options = util.getGlobalOptions(prompt_answers.pathTemplates);
 
         if (prompt_answers.testCase) {
@@ -102,7 +93,6 @@ function promptUser() {
 
 var angularScaffold = {
     appStart: appStart,
-    promptsTerminal: promptsTerminal,
     promptUser: promptUser
 };
 
