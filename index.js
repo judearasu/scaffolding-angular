@@ -16,32 +16,33 @@ function appStart(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
     var nyancat = (new Nyancat()).start();
-
+    
     setTimeout(function() {
         console.log(welcomeImg);
         nyancat.end();
-        angularScaffold.promptUser();
+        inquirer.prompt([{
+            type: 'list',
+            name: 'options',
+            message: 'What do you like to create?',
+            choices: ['Component', 'Angular Services', 'Mock Services'],
+            default: 'Component'
+        }], function(params) {
+            angularScaffold.promptUser(params.options);
+        });
     }, 1200);
 }
 
-function promptsTerminal() {
-    inquirer.prompt([{
-        type: 'list',
-        name: 'options',
-        message: 'What do you like to create?',
-        default: 'component',
-        choices: ['component', 'angular services', 'mock services']
-    }], function(params) {
-        console.log(params);
-    });
-}
-
-function promptUser() {
+function promptUser(optionList) {
     var util = require('./util.js');
+    var optionsPrompt = util.componentsTerminal();
 
-    // angularScaffold.promptsTerminal();
+    if(optionList === 'Angular Services'){
+        optionsPrompt = util.ngServiceTerminal();
+    } else if (optionList === 'Mock Services'){
+        optionsPrompt = util.mockServiceTerminal();
+    }
 
-    inquirer.prompt(util.componentsTerminal(), function(params) {
+    inquirer.prompt(optionsPrompt, function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
@@ -92,7 +93,6 @@ function promptUser() {
 
 var angularScaffold = {
     appStart: appStart,
-    promptsTerminal: promptsTerminal,
     promptUser: promptUser
 };
 

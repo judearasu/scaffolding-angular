@@ -32,6 +32,24 @@ function componentsTerminal() {
     }];
 }
 
+function ngServiceTerminal() {
+    return [{
+        type: 'input',
+        name: constants.ngService.FOLDER_NAME,
+        message: constants.ngService.FOLDER_MESSAGE,
+        default: constants.ngService.FOLDER_DEFAULT
+    }];
+}
+
+function mockServiceTerminal() {
+    return [{
+        type: 'input',
+        name: constants.mockService.FOLDER_NAME,
+        message: constants.mockService.FOLDER_MESSAGE,
+        default: constants.mockService.FOLDER_DEFAULT
+    }];
+}
+
 function appStart(){
 	var scaffolding = require('./index.js');
 	scaffolding.appStart(__dirname);
@@ -39,8 +57,10 @@ function appStart(){
 
 var util = {
     getGlobalOptions: getGlobalOptions,
-    appStart: appStart,
-    componentsTerminal: componentsTerminal
+    componentsTerminal: componentsTerminal,
+    ngServiceTerminal: ngServiceTerminal,
+    mockServiceTerminal: mockServiceTerminal,
+    appStart: appStart
 };
 
 // Call appStart(); only for testing
