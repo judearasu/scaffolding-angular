@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     chalk = require('chalk'),
     welcomeImg = require('./images/welcomeImg.js'),
     Nyancat = require('nyansole'),
-    clear = require("cli-clear");
+    clear = require("cli-clear"),
+    constants = require('./constants');
 
 function appStart(appDir) {
     clear();
@@ -24,28 +25,27 @@ function appStart(appDir) {
     }, 1200);
 }
 
-//
 function promptsTerminal() {
     return [{
         type: 'input',
-        name: 'module',
-        message: 'Type the name of the AngularJs module?',
-        default: 'projectName'
+        name: constants.component.FOLDER_NAME,
+        message: constants.component.FOLDER_MESSAGE,
+        default: constants.component.FOLDER_DEFAULT
     }, {
         type: 'input',
-        name: 'fileName',
-        message: 'Type the name of your component?',
-        default: 'testComponent'
+        name: constants.component.NGMODULE_NAME,
+        message: constants.component.NGMODULE_MESSAGE,
+        default: constants.component.NGMODULE_DEFAULT
     }, {
         type: 'input',
-        name: 'pathTemplates',
-        message: 'Type the path for templates?',
-        default: 'source/app/components'
+        name: constants.component.PATH_NAME,
+        message: constants.component.PATH_MESSAGE,
+        default: constants.component.PATH_DEFAULT
     }, {
         type: 'confirm',
-        name: 'spec',
-        message: 'Do you want to include unit testing?',
-        default: true
+        name: constants.component.TDD_NAME,
+        message: constants.component.TDD_MESSAGE,
+        default: constants.component.TDD_DEFAULT
     }];
 }
 
