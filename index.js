@@ -10,49 +10,64 @@ var gulp = require('gulp'),
     chalk = require('chalk'),
     welcomeImg = require('./images/welcomeImg.js'),
     Nyancat = require('nyansole'),
-    clear = require("cli-clear");
+    clear = require("cli-clear"),
+    util = require('./util.js');
 
 function appStart(appDir) {
     clear();
     appDir = appDir || path.resolve(__dirname + '../../../');
-    var nyancat = (new Nyancat()).start();
+    // var nyancat = (new Nyancat()).start();
+    // promptsTerminal();
+    console.log('Hello');
+    console.log(util);
 
-    setTimeout(function() {
-        console.log(welcomeImg);
-        nyancat.end();
-        angularScaffold.promptUser();
-    }, 1200);
+    // angularScaffold.promptUser();
+
+    // setTimeout(function() {
+        // console.log(welcomeImg);
+        // nyancat.end();
+    // }, 1200);
 }
 
 //
+
 function promptsTerminal() {
-    return [{
-        type: 'input',
-        name: 'module',
-        message: 'Type the name of the AngularJs module?',
-        default: 'projectName'
-    }, {
-        type: 'input',
-        name: 'fileName',
-        message: 'Type the name of your component?',
-        default: 'testComponent'
-    }, {
-        type: 'input',
-        name: 'pathTemplates',
-        message: 'Type the path for templates?',
-        default: 'source/app/components'
-    }, {
-        type: 'confirm',
-        name: 'spec',
-        message: 'Do you want to include unit testing?',
-        default: true
-    }];
+  return [{
+    type: 'list',
+    name: 'options',
+    message: 'What do you like to create?',
+    default: 'component',
+    choices:['component','angular services','mock services']
+  }];
+
 }
+// function promptsTerminal() {
+//     return [{
+//         type: 'input',
+//         name: 'module',
+//         message: 'Type the name of the AngularJs module?',
+//         default: 'projectName'
+//     }, {
+//         type: 'input',
+//         name: 'fileName',
+//         message: 'Type the name of your component?',
+//         default: 'testComponent'
+//     }, {
+//         type: 'input',
+//         name: 'pathTemplates',
+//         message: 'Type the path for templates?',
+//         default: 'source/app/components'
+//     }, {
+//         type: 'confirm',
+//         name: 'spec',
+//         message: 'Do you want to include unit testing?',
+//         default: true
+//     }];
+// }
 
 function promptUser() {
-    var util = require('./util.js');
-
-    inquirer.prompt(promptsTerminal(), function(params) {
+    console.log(util.componentsTerminal());
+    inquirer.prompt(util.componentsTerminal(), function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
