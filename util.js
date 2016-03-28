@@ -1,4 +1,10 @@
-var constants = require('./constants');
+var osLocale = require('os-locale');
+var constants = osLocale(function(err, locale) {
+    constants = require('./locales/en.js');
+    if (locale === 'es_MX') {
+        constants = require('./locales/es.js');
+    }
+});
 
 function getGlobalOptions(pathTemplates) {
     return {
@@ -6,6 +12,16 @@ function getGlobalOptions(pathTemplates) {
         base: './',
         testSpecDir: 'source/test/js/specs'
     };
+}
+
+function optionListTerminal() {
+    return [{
+        type: 'list',
+        name: constants.optionList.NAME,
+        message: constants.optionList.MESSAGE,
+        choices: constants.optionList.CHOICES,
+        default: constants.optionList.DEFAULT,
+    }];
 }
 
 function componentsTerminal() {
@@ -50,13 +66,14 @@ function mockServiceTerminal() {
     }];
 }
 
-function appStart(){
-	var scaffolding = require('./index.js');
-	scaffolding.appStart(__dirname);
+function appStart() {
+    var scaffolding = require('./index.js');
+    scaffolding.appStart();
 }
 
 var util = {
     getGlobalOptions: getGlobalOptions,
+    optionListTerminal: optionListTerminal,
     componentsTerminal: componentsTerminal,
     ngServiceTerminal: ngServiceTerminal,
     mockServiceTerminal: mockServiceTerminal,
@@ -64,5 +81,5 @@ var util = {
 };
 
 // Call appStart(); only for testing
-appStart();
+// appStart();
 module.exports = util;

@@ -10,30 +10,24 @@ var gulp = require('gulp'),
     chalk = require('chalk'),
     welcomeImg = require('./images/welcomeImg.js'),
     Nyancat = require('nyansole'),
-    clear = require("cli-clear");
+    clear = require("cli-clear"),
+    util = require('./util.js');
 
-function appStart(appDir) {
+function appStart() {
     clear();
-    appDir = appDir || path.resolve(__dirname + '../../../');
     var nyancat = (new Nyancat()).start();
-    
+
     setTimeout(function() {
+        util = require('./util.js');
         console.log(welcomeImg);
         nyancat.end();
-        inquirer.prompt([{
-            type: 'list',
-            name: 'options',
-            message: 'What do you like to create?',
-            choices: ['Component', 'Angular Services', 'Mock Services'],
-            default: 'Component'
-        }], function(params) {
+        inquirer.prompt(util.optionListTerminal(), function(params) {
             angularScaffold.promptUser(params.options);
         });
     }, 1200);
 }
 
 function promptUser(optionList) {
-    var util = require('./util.js');
     var optionsPrompt = util.componentsTerminal();
 
     if(optionList === 'Angular Services'){
