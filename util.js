@@ -1,4 +1,10 @@
-var constants = require('./constants');
+var osLocale = require('os-locale');
+var constants = osLocale(function(err, locale) {
+    constants = require('./locales/en.js');
+    if (locale === 'es_MX') {
+        constants = require('./locales/es.js');
+    }
+});
 
 function getGlobalOptions(pathTemplates) {
     return {
@@ -60,9 +66,9 @@ function mockServiceTerminal() {
     }];
 }
 
-function appStart(){
-	var scaffolding = require('./index.js');
-	scaffolding.appStart();
+function appStart() {
+    var scaffolding = require('./index.js');
+    scaffolding.appStart();
 }
 
 var util = {
