@@ -10,8 +10,7 @@ var gulp = require('gulp'),
     chalk = require('chalk'),
     welcomeImg = require('./images/welcomeImg.js'),
     Nyancat = require('nyansole'),
-    clear = require("cli-clear"),
-    constants = require('./constants');
+    clear = require("cli-clear");
 
 function appStart(appDir) {
     clear();
@@ -26,33 +25,23 @@ function appStart(appDir) {
 }
 
 function promptsTerminal() {
-    return [{
-        type: 'input',
-        name: constants.component.FOLDER_NAME,
-        message: constants.component.FOLDER_MESSAGE,
-        default: constants.component.FOLDER_DEFAULT
-    }, {
-        type: 'input',
-        name: constants.component.NGMODULE_NAME,
-        message: constants.component.NGMODULE_MESSAGE,
-        default: constants.component.NGMODULE_DEFAULT
-    }, {
-        type: 'input',
-        name: constants.component.PATH_NAME,
-        message: constants.component.PATH_MESSAGE,
-        default: constants.component.PATH_DEFAULT
-    }, {
-        type: 'confirm',
-        name: constants.component.TDD_NAME,
-        message: constants.component.TDD_MESSAGE,
-        default: constants.component.TDD_DEFAULT
-    }];
+    inquirer.prompt([{
+        type: 'list',
+        name: 'options',
+        message: 'What do you like to create?',
+        default: 'component',
+        choices: ['component', 'angular services', 'mock services']
+    }], function(params) {
+        console.log(params);
+    });
 }
 
 function promptUser() {
     var util = require('./util.js');
 
-    inquirer.prompt(promptsTerminal(), function(params) {
+    // angularScaffold.promptsTerminal();
+
+    inquirer.prompt(util.componentsTerminal(), function(params) {
         prompt_answers = {
             scriptAppName: params.module,
             className: _.capitalize(_.camelize(params.fileName)),
