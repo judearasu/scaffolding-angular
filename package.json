@@ -1,6 +1,6 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "NPM package to create an angular scaffolding",
   "license": "MIT",
   "main": "index.js",
