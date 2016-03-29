@@ -1,12 +1,15 @@
 var osLocale = require('os-locale');
 var constants = osLocale(function(err, locale) {
-    constants = require('./locales/en.js');
+    constants = require('./locales/en.json');
     if (locale === 'es_ES') {
-        constants = require('./locales/es.js');
+        constants = require('./locales/es.json');
+    }
+    if (locale === 'pt_PT') {
+        constants = require('./locales/pt.json');
     }
 });
 
-function getGlobalOptions(pathTemplates) {
+function getGlobalOptions(pathTemplates, pathTDD) {
     return {
         appDir: pathTemplates,
         base: './',
