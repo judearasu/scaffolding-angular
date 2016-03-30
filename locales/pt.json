@@ -30,6 +30,14 @@
     "mockService": {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Digite o nome do seu Serviço Mock?",
-        "FOLDER_DEFAULT": "nuevo-servicio-mock"
+        "FOLDER_DEFAULT": "new-mock-service",
+
+        "PATH_NAME": "pathTemplates",
+        "PATH_MESSAGE": "Digite o caminho para modelos de simulação?",
+        "PATH_DEFAULT": "mock_services/data",
+
+        "TDD_NAME": "spec",
+        "TDD_MESSAGE": "Você deseja incluir o teste de unidade?",
+        "TDD_DEFAULT": true
     }
 }

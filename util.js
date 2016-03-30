@@ -78,6 +78,16 @@ function mockServiceTerminal() {
         name: constants.mockService.FOLDER_NAME,
         message: constants.mockService.FOLDER_MESSAGE,
         default: constants.mockService.FOLDER_DEFAULT
+    }, {
+        type: 'input',
+        name: constants.mockService.PATH_NAME,
+        message: constants.mockService.PATH_MESSAGE,
+        default: constants.mockService.PATH_DEFAULT
+    }, {
+        type: 'confirm',
+        name: constants.mockService.TDD_NAME,
+        message: constants.mockService.TDD_MESSAGE,
+        default: constants.mockService.TDD_DEFAULT
     }];
 }
 
@@ -96,5 +106,5 @@ var util = {
 };
 
 // Call this function only for testing
-appStart();
+//appStart();
 module.exports = util;

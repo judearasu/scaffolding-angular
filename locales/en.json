@@ -38,6 +38,14 @@
     "mockService": {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Type the name of your Mock Service?",
-        "FOLDER_DEFAULT": "new-mock-service"
+        "FOLDER_DEFAULT": "new-mock-service",
+
+        "PATH_NAME": "pathTemplates",
+        "PATH_MESSAGE": "Type the path for mock templates?",
+        "PATH_DEFAULT": "mock_services/data",
+
+        "TDD_NAME": "spec",
+        "TDD_MESSAGE": "Do you want to include unit testing?",
+        "TDD_DEFAULT": true
     }
 }
