@@ -1,9 +1,9 @@
-angular.module('customer-service')
-    .service('CustomerService', CustomerService);
+angular.module('<%= fileName %>')
+    .service('<%= className %>', <%= className %>);
 
-CustomerService.$inject = ['$resource','$http', 'CONFIG'];
+<%= className %>.$inject = ['$resource','$http', 'CONFIG'];
 
-function CustomerService($resource, $http, CONFIG) {
+function <%= className %>($resource, $http, CONFIG) {
 
 
     var service = this;

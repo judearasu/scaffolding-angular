@@ -1,2 +1,2 @@
 angular
-    .module('<%= fileName %>-service', []);
+    .module('<%= fileName %>', []);

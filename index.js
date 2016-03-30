@@ -36,8 +36,21 @@ function promptUser(optionList) {
     }
 
     if (optionList === 'ngService') {
+        inquirer.prompt(util.ngServiceTerminal(), function(params) {
+             var serviceName = textfinder(params.fileName.toLowerCase(), 'service');
+            promptAnswers = {
+                className: _.capitalize(_.camelize(serviceName)),
+                fileName: _.slugify(serviceName),
+                testCase: params.spec,
+                pathTemplates: params.pathTemplates,
+            };
+            var options = util.getGlobalOptions(promptAnswers.pathTemplates);
+            // Create scaffolding files for Component
+          //  generators.componentsGenerator(promptAnswers, options);
+          console.log(promptAnswers);
+        });
         // Create scaffolding files for Component
-        //generators.ngServiceGenerator();
+        generators.ngServiceGenerator();
     }
 
     if (optionList === 'mockService') {
@@ -46,6 +59,13 @@ function promptUser(optionList) {
     }
 }
 
+function textfinder (fileName, textToAppend) {
+    if (fileName.indexOf(textToAppend) >= 0) {
+        return fileName;
+    } else {
+       return fileName+' '+textToAppend;
+    }
+}
 var angularScaffold = {
     appStart: appStart,
     promptUser: promptUser
