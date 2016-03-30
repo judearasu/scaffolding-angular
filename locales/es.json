@@ -2,7 +2,7 @@
     "optionList" : {
         "NAME": "options",
         "MESSAGE": "¿Qué le gustaria crear?",
-        "CHOICES": ["Component", "Angular Services", "Mock Services"],
+        "CHOICES": ["Component", "ngService", "mockService"],
         "DEFAULT": "Component"
     },
     "component" : {
