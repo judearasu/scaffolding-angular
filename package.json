@@ -1,11 +1,11 @@
 {
   "name": "scaffolding-angular",
-  "version": "1.5.7",
+  "version": "1.6.2",
   "description": "NPM package to create an angular scaffolding",
   "license": "MIT",
   "main": "index.js",
   "author": "Eduardo Gonzalez",
-  "url" :"https://www.npmjs.com/package/scaffolding-angular",
+  "url": "https://www.npmjs.com/package/scaffolding-angular",
   "scripts": {
     "test": "node_modules/.bin/mocha"
   },
@@ -18,14 +18,15 @@
     "cli-clear": "^1.0.4",
     "fs-extra": "^0.26.7",
     "gulp": "^3.9.1",
-    "imaging": "^2.1.0",
-    "inquirer": "^0.12.0",
-    "nyansole": "^0.5.1",
     "gulp-conflict": "^0.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-template": "^3.1.0",
     "gulp-util": "^3.0.7",
+    "imaging": "^2.1.0",
+    "inquirer": "^0.12.0",
     "mocha": "^2.4.5",
+    "nyansole": "^0.5.1",
+    "os-locale": "^1.4.0",
     "should": "^8.2.2",
     "underscore.string": "^3.3.4"
   }

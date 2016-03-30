@@ -1,3 +1,5 @@
+(function() {
+	'use strict';
 angular.module('<%= scriptAppName %>')
 	.directive('<%= className %>', <%= className %>);
 
@@ -19,3 +21,4 @@ function <%= className %>() {
 	        <%= className %>.init();
 	    }
 	}
+})();

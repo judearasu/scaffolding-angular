@@ -1,10 +1,12 @@
-angular.module('store-service')
-    .service('StoreService', StoreService);
+angular.module('customer-service')
+    .service('CustomerService', CustomerService);
 
-StoreService.$inject = [];
+CustomerService.$inject = ['$resource','$http', 'CONFIG'];
 
-function StoreService() {
+function CustomerService($resource, $http, CONFIG) {
+
 
     var service = this;
+
 
 }
