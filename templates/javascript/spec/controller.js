@@ -6,11 +6,11 @@ describe('Controller: <%= className %>Ctrl', function() {
 
     beforeEach(function() {
         module('<%= scriptAppName %>', function($provide) {
-            specHelper.fakeRouteProvider($provide);
-            specHelper.fakeLogger($provide);
+            // specHelper.fakeRouteProvider($provide);
+            // specHelper.fakeLogger($provide);
             $provide.constant('CONFIG', TestConfig);
         });
-        specHelper.injector(function($controller, $q, $rootScope, $httpBackend, CONFIG) { });
+        // specHelper.injector(function($controller, $q, $rootScope, $httpBackend, CONFIG) { });
     });
 
     beforeEach(function() {
