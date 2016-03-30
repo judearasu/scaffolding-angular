@@ -1,5 +1,3 @@
-var constants = require('../constants.js');
-
 describe('Nyansole', function() {
     var Nyancat = require('nyansole');
 
@@ -25,10 +23,10 @@ describe('Welcome Image', function() {
 });
 
 describe('Option List Terminal Prompt', function() {
-    var scaffoldPrompt = require('../util.js').optionListTerminal();
-
+    var scaffoldPrompt = require('../util.js');
+    var constants = require('../locales/en.json');
     it('should Component input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[0];
+        var modulePrompt = scaffoldPrompt.optionListTerminal()[0];
         modulePrompt.type.should.equal('list');
         modulePrompt.name.should.equal(constants.optionList.NAME);
         modulePrompt.message.should.equal(constants.optionList.MESSAGE);
@@ -38,64 +36,72 @@ describe('Option List Terminal Prompt', function() {
     });
 });
 
-describe('Components Terminal Prompt', function() {
-    var scaffoldPrompt = require('../util.js').componentsTerminal();
-
-    it('should Component input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[0];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal('fileName');
-        modulePrompt.message.should.equal('Type the name of your component?');
-        done();
+describe('Terminal Prompt', function() {
+    var scaffoldPrompt = require('../util.js');
+    var osLocale = require('os-locale');
+    var constants = osLocale(function(err, locale) {
+        constants = require('../locales/en.json');
+        if (locale === 'es_ES') {
+            constants = require('../locales/es.json');
+        }
+        if (locale === 'pt_PT') {
+            constants = require('../locales/pt.json');
+        }
     });
 
-    it('should Module input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[1];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal('module');
-        modulePrompt.message.should.equal('Type the name of the AngularJs module?');
-        done();
+    describe('Components Terminal Prompt', function() {
+        it('should Component input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.componentsTerminal()[0];
+            modulePrompt.type.should.equal('input');
+            modulePrompt.name.should.equal('fileName');
+            modulePrompt.message.should.equal('Type the name of your component?');
+            done();
+        });
+
+        it('should Module input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.componentsTerminal()[1];
+            modulePrompt.type.should.equal('input');
+            modulePrompt.name.should.equal('module');
+            modulePrompt.message.should.equal('Type the name of the AngularJs module?');
+            done();
+        });
+
+        it('should TDD input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.componentsTerminal()[2];
+            modulePrompt.type.should.equal('input');
+            modulePrompt.name.should.equal('pathTemplates');
+            modulePrompt.message.should.equal('Type the path for templates?');
+            done();
+        });
+
+        it('should TDD input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.componentsTerminal()[3];
+            modulePrompt.type.should.equal('confirm');
+            modulePrompt.name.should.equal('spec');
+            modulePrompt.message.should.equal('Do you want to include unit testing?');
+            done();
+        });
     });
 
-    it('should TDD input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[2];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal('pathTemplates');
-        modulePrompt.message.should.equal('Type the path for templates?');
-        done();
+    describe('ngService Terminal Prompt', function() {
+        it('should ngService input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.ngServiceTerminal()[0];
+            modulePrompt.type.should.equal('input');
+            modulePrompt.name.should.equal(constants.ngService.FOLDER_NAME);
+            modulePrompt.message.should.equal(constants.ngService.FOLDER_MESSAGE);
+            modulePrompt.default.should.equal(constants.ngService.FOLDER_DEFAULT);
+            done();
+        });
     });
 
-    it('should TDD input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[3];
-        modulePrompt.type.should.equal('confirm');
-        modulePrompt.name.should.equal('spec');
-        modulePrompt.message.should.equal('Do you want to include unit testing?');
-        done();
-    });
-});
-
-describe('ngService Terminal Prompt', function() {
-    var scaffoldPrompt = require('../util.js').ngServiceTerminal();
-
-    it('should ngService input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[0];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal(constants.ngService.FOLDER_NAME);
-        modulePrompt.message.should.equal(constants.ngService.FOLDER_MESSAGE);
-        modulePrompt.default.should.equal(constants.ngService.FOLDER_DEFAULT);
-        done();
-    });
-});
-
-describe('mockServiceTerminal Terminal Prompt', function() {
-    var scaffoldPrompt = require('../util.js').mockServiceTerminal();
-
-    it('should mockServiceTerminal input needs to have this properties', function(done) {
-        var modulePrompt = scaffoldPrompt[0];
-        modulePrompt.type.should.equal('input');
-        modulePrompt.name.should.equal(constants.mockService.FOLDER_NAME);
-        modulePrompt.message.should.equal(constants.mockService.FOLDER_MESSAGE);
-        modulePrompt.default.should.equal(constants.mockService.FOLDER_DEFAULT);
-        done();
+    describe('mockServiceTerminal Terminal Prompt', function() {
+        it('should mockServiceTerminal input needs to have this properties', function(done) {
+            var modulePrompt = scaffoldPrompt.mockServiceTerminal()[0];
+            modulePrompt.type.should.equal('input');
+            modulePrompt.name.should.equal(constants.mockService.FOLDER_NAME);
+            modulePrompt.message.should.equal(constants.mockService.FOLDER_MESSAGE);
+            modulePrompt.default.should.equal(constants.mockService.FOLDER_DEFAULT);
+            done();
+        });
     });
 });
