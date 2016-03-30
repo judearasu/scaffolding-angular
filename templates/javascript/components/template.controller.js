@@ -1,3 +1,5 @@
+(function() {
+	'use strict';
 angular.module('<%= scriptAppName %>')
     .controller('<%= className %>Ctrl', <%= className %>Ctrl);
 
@@ -12,3 +14,4 @@ function <%= className %>() {
 	    return true;
 	}
 }
+})();
