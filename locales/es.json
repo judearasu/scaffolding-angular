@@ -15,7 +15,7 @@
         "NGMODULE_DEFAULT": "nombreProyecto",
 
         "PATH_NAME": "pathTemplates",
-        "PATH_MESSAGE": "Escriba el nombre del módulo AngularJS?",
+        "PATH_MESSAGE": "Escriba la ruta del módulo AngularJS?",
         "PATH_DEFAULT": "source/app/components",
 
         "TDD_NAME": "spec",
@@ -30,6 +30,14 @@
     "mockService": {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Escriba el nombre de su servicio Mock?",
-        "FOLDER_DEFAULT": "nuevo-servicio-mock"
+        "FOLDER_DEFAULT": "nuevo-servicio-mock",
+
+        "PATH_NAME": "pathTemplates",
+        "PATH_MESSAGE": "Escriba la ruta de su servicio Mock?",
+        "PATH_DEFAULT": "mock_services/data",
+
+        "TDD_NAME": "spec",
+        "TDD_MESSAGE": "¿Quieres incluir las pruebas unitarias?",
+        "TDD_DEFAULT": true
     }
 }
