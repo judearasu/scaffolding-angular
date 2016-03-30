@@ -84,5 +84,5 @@ var util = {
 };
 
 // Call this function only for testing
-  appStart();
+//  appStart();
 module.exports = util;
