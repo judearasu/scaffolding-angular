@@ -35,14 +35,14 @@ function promptUser(optionList) {
         });
     }
 
-    if (optionList === 'Angular Services') {
+    if (optionList === 'ngService') {
         // Create scaffolding files for Component
-        generators.ngServiceGenerator();
+        //generators.ngServiceGenerator();
     }
 
-    if (optionList === 'Mock Services') {
+    if (optionList === 'mockService') {
         // Create scaffolding files for Component
-        generators.mockServiceGenerator();
+        //generators.mockServiceGenerator();
     }
 }
 
