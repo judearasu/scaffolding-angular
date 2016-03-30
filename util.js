@@ -13,7 +13,8 @@ function getGlobalOptions(pathTemplates, pathTDD) {
     return {
         appDir: pathTemplates,
         base: './',
-        testSpecDir: 'source/test/js/specs'
+        testSpecDir: 'source/test/js/specs',
+        serviceDir: pathTemplates
     };
 }
 
@@ -57,7 +58,18 @@ function ngServiceTerminal() {
         name: constants.ngService.FOLDER_NAME,
         message: constants.ngService.FOLDER_MESSAGE,
         default: constants.ngService.FOLDER_DEFAULT
-    }];
+    }, {
+        type: 'confirm',
+        name: constants.ngService.TDD_NAME,
+        message: constants.ngService.TDD_MESSAGE,
+        default: constants.ngService.TDD_DEFAULT
+    }, {
+        type: 'input',
+        name: constants.ngService.PATH_NAME,
+        message: constants.ngService.PATH_MESSAGE,
+        default: constants.ngService.PATH_DEFAULT
+    }
+  ];
 }
 
 function mockServiceTerminal() {
@@ -94,5 +106,5 @@ var util = {
 };
 
 // Call this function only for testing
- appStart();
+//appStart();
 module.exports = util;

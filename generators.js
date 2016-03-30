@@ -43,8 +43,26 @@ function componentsGenerator(promptAnswers, options) {
         });
 }
 
-function ngServiceGenerator() {
-    console.log("create Angular Services");
+function ngServiceGenerator(promptAnswers, options) {
+    gulp.src(__dirname + '/templates/javascript/service/*.service.js')
+        .pipe(template(promptAnswers))
+        .pipe(rename(promptAnswers.fileName + '.module.js'))
+        .pipe(conflict(options.base + options.serviceDir + '/' + promptAnswers.scriptAppName))
+        .pipe(gulp.dest(options.base + options.serviceDir + '/' + promptAnswers.fileName));
+    gulp.src(__dirname + '/templates/javascript/service/*.module.js')
+        .pipe(template(promptAnswers))
+        .pipe(rename(promptAnswers.fileName + '.js'))
+        .pipe(conflict(options.base + options.serviceDir + '/' + promptAnswers.scriptAppName))
+        .pipe(gulp.dest(options.base + options.serviceDir + '/' + promptAnswers.fileName));
+    gulp.src(__dirname + '/templates/javascript/spec/service.js')
+        .pipe(template(promptAnswers))
+        .pipe(rename(promptAnswers.fileName + '.spec.js'))
+        .pipe(conflict(options.base + options.testSpecDir + '/'))
+        .pipe(gulp.dest(options.base + options.testSpecDir + '/'))
+        .on('finish', function() {
+            console.log("\n" + chalk.green("Success! - Service Created"));
+            process.exit(1);
+        });
 }
 
 function mockServiceGenerator(promptAnswers, options) {

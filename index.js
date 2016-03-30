@@ -6,7 +6,7 @@ var inquirer = require('inquirer'),
     util = require('./util.js'),
     generators = require('./generators.js'),
     nyancat = (new Nyancat()).start();
-    clear();
+clear();
 
 function appStart() {
     setTimeout(function() {
@@ -36,8 +36,18 @@ function promptUser(optionList) {
     }
 
     if (optionList === 'ngService') {
-        // Create scaffolding files for Component
-        generators.ngServiceGenerator();
+        inquirer.prompt(util.ngServiceTerminal(), function(params) {
+            var serviceName = textfinder(params.fileName.toLowerCase(), 'service');
+            promptAnswers = {
+                className: _.capitalize(_.camelize(serviceName)),
+                fileName: _.slugify(serviceName),
+                testCase: params.spec,
+                pathTemplates: params.pathTemplates,
+            };
+            var options = util.getGlobalOptions(promptAnswers.pathTemplates);
+            // Create scaffolding files for Component
+            generators.ngServiceGenerator(promptAnswers, options);
+        });
     }
 
     if (optionList === 'mockService') {
@@ -49,12 +59,19 @@ function promptUser(optionList) {
                 pathTemplates: params.pathTemplates,
             };
             var options = util.getGlobalOptions(promptAnswers.pathTemplates);
-        // Create scaffolding files for Component
-        generators.mockServiceGenerator(promptAnswers, options);
+            // Create scaffolding files for Component
+            generators.mockServiceGenerator(promptAnswers, options);
         });
     }
 }
 
+function textfinder(fileName, textToAppend) {
+    if (fileName.indexOf(textToAppend) >= 0) {
+        return fileName;
+    } else {
+        return fileName + ' ' + textToAppend;
+    }
+}
 var angularScaffold = {
     appStart: appStart,
     promptUser: promptUser

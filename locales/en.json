@@ -25,7 +25,15 @@
     "ngService": {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Type the name of your AngularJs Service?",
-        "FOLDER_DEFAULT": "new-service"
+        "FOLDER_DEFAULT": "new-service",
+
+        "PATH_NAME": "pathTemplates",
+        "PATH_MESSAGE": "Type the path for angular Service?",
+        "PATH_DEFAULT": "source/app/services",
+
+        "TDD_NAME": "spec",
+        "TDD_MESSAGE": "Do you want to include unit testing?",
+        "TDD_DEFAULT": true
     },
     "mockService": {
         "FOLDER_NAME": "fileName",
