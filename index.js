@@ -16,7 +16,7 @@ function appStart() {
         inquirer.prompt(util.optionListTerminal(), function(params) {
             angularScaffold.promptUser(params.options);
         });
-    }, 1200);
+    }, 120);
 }
 
 function promptUser(optionList) {
@@ -37,12 +37,21 @@ function promptUser(optionList) {
 
     if (optionList === 'ngService') {
         // Create scaffolding files for Component
-        //generators.ngServiceGenerator();
+        generators.ngServiceGenerator();
     }
 
     if (optionList === 'mockService') {
+        inquirer.prompt(util.mockServiceTerminal(), function(params) {
+            promptAnswers = {
+                className: _.capitalize(_.camelize(params.fileName)),
+                fileName: _.slugify(params.fileName),
+                testCase: params.spec,
+                pathTemplates: params.pathTemplates,
+            };
+            var options = util.getGlobalOptions(promptAnswers.pathTemplates);
         // Create scaffolding files for Component
-        //generators.mockServiceGenerator();
+        generators.mockServiceGenerator(promptAnswers, options);
+        });
     }
 }
 
