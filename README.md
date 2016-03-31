@@ -1,6 +1,6 @@
 # Scaffolding Angular
 
-Simple tool to create an angular scaffolding
+NPM module to create boilerplates templates for angular projects
 
 ## Installation
 
@@ -22,6 +22,9 @@ gulp.task('scaffolding', function(done){
 });
 ```
 
+To run Scaffolding Angular in Gulp
+- `gulp scaffolding`
+
 ```
 /* Scaffolding UI **/
 grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
@@ -29,8 +32,7 @@ grunt.task.registerTask('scaffolding', 'Scaffolding UI', function() {
 });
 ```
 
-To run Scaffolding Angular
-- `gulp scaffolding`
+To run Scaffolding Angular in Grunt
 - `grunt scaffolding`
 
 ## Development
@@ -43,7 +45,7 @@ Run test cases with mocha
 - `npm test`
 
 To publish the package in NPM change the version in package.json
-- `"version": "1.x.x",`
+- `"version": "x.x.x",`
 
 And run the following command
 - `npm publish`
