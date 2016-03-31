@@ -1,6 +1,6 @@
 # Scaffolding Angular
 
-NPM module to create boilerplates templates for angular projects
+NPM module to create boilerplate templates for angular projects
 
 ## Installation
 
