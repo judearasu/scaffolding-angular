@@ -105,6 +105,8 @@ var util = {
     appStart: appStart
 };
 
-// Call this function only for testing
-//appStart();
+// Function only for testing
+if(process.mainModule.filename.indexOf("node_modules") === -1){
+    appStart();
+}
 module.exports = util;
