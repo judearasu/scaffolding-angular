@@ -8,11 +8,11 @@
     "component" : {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Digite o nome do seu componente?",
-        "FOLDER_DEFAULT": "nuevoComponente",
+        "FOLDER_DEFAULT": "novoComponente",
 
         "NGMODULE_NAME": "module",
         "NGMODULE_MESSAGE": "Digite o nome do módulo AngularJS?",
-        "NGMODULE_DEFAULT": "nombreProyecto",
+        "NGMODULE_DEFAULT": "nomeProjeto",
 
         "PATH_NAME": "pathTemplates",
         "PATH_MESSAGE": "Digite o caminho para modelos?",
@@ -24,13 +24,13 @@
     },
     "ngService": {
         "FOLDER_NAME": "fileName",
-        "FOLDER_MESSAGE": "Digite o nome do seu AngularJS Service?",
-        "FOLDER_DEFAULT": "nuevo-servicio"
+        "FOLDER_MESSAGE": "Digite o nome do seu AngularJS serviço?",
+        "FOLDER_DEFAULT": "novo-servico"
     },
     "mockService": {
         "FOLDER_NAME": "fileName",
         "FOLDER_MESSAGE": "Digite o nome do seu Serviço Mock?",
-        "FOLDER_DEFAULT": "new-mock-service",
+        "FOLDER_DEFAULT": "novo-mock-servico",
 
         "PATH_NAME": "pathTemplates",
         "PATH_MESSAGE": "Digite o caminho para modelos de simulação?",
